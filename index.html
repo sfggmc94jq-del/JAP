@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#16324f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Kana Practice">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Kana Practice Offline</title>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">OFFLINE JAPANESE PRACTICE</p>
+        <h1>Kana Practice</h1>
+        <p class="sub">Choose hiragana or katakana groups, then type the romaji from memory.</p>
+      </div>
+      <button id="installBtn" class="secondary hidden">Install App</button>
+    </header>
+
+    <section id="setupScreen">
+      <div class="mode-switch" role="group" aria-label="Kana type">
+        <button class="mode active" data-mode="hiragana">Hiragana</button>
+        <button class="mode" data-mode="katakana">Katakana</button>
+      </div>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Main Kana</h2>
+          <button class="tiny" data-select="main">Select all</button>
+        </div>
+        <div id="mainGroups" class="grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Dakuten Kana</h2>
+          <button class="tiny" data-select="dakuten">Select all</button>
+        </div>
+        <div id="dakutenGroups" class="grid"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <h2>Combination Kana</h2>
+          <button class="tiny" data-select="combo">Select all</button>
+        </div>
+        <div id="comboGroups" class="grid"></div>
+      </section>
+
+      <button id="startBtn" class="primary wide">Start Quiz</button>
+      <p id="selectionHint" class="center muted">Choose at least one group.</p>
+    </section>
+
+    <section id="quizScreen" class="hidden">
+      <div class="quiz-top">
+        <button id="quitBtn" class="secondary">← Groups</button>
+        <div id="progress" class="progress">1 / 5</div>
+      </div>
+      <section class="quiz-card">
+        <div id="kanaPrompt" class="kana">あ</div>
+        <label for="answerInput">Type the romaji</label>
+        <input id="answerInput" autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="text">
+        <p id="feedback" class="feedback">&nbsp;</p>
+        <div class="quiz-actions">
+          <button id="skipBtn" class="secondary">Skip</button>
+          <button id="submitBtn" class="primary">Check</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="resultsScreen" class="hidden">
+      <section class="card results">
+        <p class="eyebrow">SESSION COMPLETE</p>
+        <h2>Nice work.</h2>
+        <div class="score-row">
+          <div><strong id="correctCount">0</strong><span>first-try correct</span></div>
+          <div><strong id="attemptCount">0</strong><span>wrong attempts</span></div>
+        </div>
+        <h3>Characters to review</h3>
+        <div id="reviewList" class="review-list"></div>
+        <div class="result-actions">
+          <button id="againBtn" class="primary">Practice Again</button>
+          <button id="groupsBtn" class="secondary">Change Groups</button>
+        </div>
+      </section>
+    </section>
+
+    <footer>Runs entirely on your device after installation. No account or internet required.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
